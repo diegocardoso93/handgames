@@ -1,0 +1,17 @@
+{
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "editor.formatOnSave": false,
+    "[javascript]": {
+      "editor.formatOnSave": true
+    },
+    "[javascriptreact]": {
+      "editor.formatOnSave": true
+    },
+    "[typescriptreact]": {
+      "editor.formatOnSave": true
+    },
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "python.pythonPath": "/usr/bin/python3"
+}

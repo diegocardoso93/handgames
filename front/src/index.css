@@ -1,0 +1,34 @@
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: 'Poppins', sans-serif;
+  max-width: 800px;
+  margin: auto;
+}
+
+button {
+  font-family: 'Poppins', sans-serif;
+  margin: 10px;
+  padding: 10px 14px;
+  border: 2px solid black;
+  background: none;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all 100ms;
+}
+
+button:hover {
+  color: #613ab7;
+  border: 2px solid #613ab7;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+h1, h2, h3, h4 {
+  margin-block-start: 10px;
+  margin-block-end: 10px;
+}
