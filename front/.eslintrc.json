@@ -1,13 +1,15 @@
 {
   "extends": [
     "prettier",
-    "plugin:react/recommended"
+    "plugin:react/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended"
   ],
-  "plugins": ["prettier"],
+  "plugins": ["prettier","@typescript-eslint"],
   "rules": {
     "prettier/prettier": ["error", { "endOfLine": "auto" }]
   },
-  "parser": "babel-eslint",
+  "parser": "@typescript-eslint/parser",
   "env": {
     "browser": true
   },

@@ -73,7 +73,7 @@ export default function Pinfinger() {
       if (target !== 4) {
         setTarget(4);
       } else {
-        let x = sequence.shift();
+        const x = sequence.shift();
         setTarget(x || 0);
         if (!x) {
           setGameState({ ...gameState, phase: 'end' });

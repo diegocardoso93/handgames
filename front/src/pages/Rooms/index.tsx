@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   GamesContainer,
   Card,
@@ -16,6 +16,10 @@ import {
 export default function Rooms() {
   const [showModal, setShowModal] = useState(false);
   const [selectedGame, setSelectedGame] = useState<string>();
+
+  useEffect(() => {
+    // fetch
+  }, []);
 
   return (
     <div>
@@ -67,13 +71,13 @@ export default function Rooms() {
                     <div>
                       <img src="/img/rockpaperscissor.png" />
                     </div>
-                    <p>Rock Paper Scissor</p>
+                    <p>Rock, paper, scissor</p>
                   </Card>
                   <Card onClick={() => setSelectedGame('oddoreven')}>
                     <div>
                       <img src="/img/oddeven.png" />
                     </div>
-                    <p>Odd or Even</p>
+                    <p>Odd or even</p>
                   </Card>
                   <Card onClick={() => setSelectedGame('pickahand')}>
                     <div>
@@ -81,11 +85,11 @@ export default function Rooms() {
                     </div>
                     <p>Pick a hand</p>
                   </Card>
-                  <Card onClick={() => setSelectedGame('pinfinger')}>
+                  <Card onClick={() => setSelectedGame('guessthefinger')}>
                     <div>
-                      <img src="/img/pinfinger.png" />
+                      <img src="/img/guessthefinger.png" />
                     </div>
-                    <p>Pinfinger</p>
+                    <p>Guess the finger</p>
                   </Card>
                 </GamesContainer>
               )) || (

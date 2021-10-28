@@ -34,25 +34,25 @@ export default function Home() {
             <div>
               <img src="/img/rockpaperscissor.png" />
             </div>
-            <p>Rock Paper Scissor</p>
+            <p>Rock, paper, scissor</p>
           </Card>
           <Card visible={visible === 1}>
             <div>
-              <img src="/img/pinfinger.png" />
-            </div>
-            <p>Pinfinger</p>
-          </Card>
-          <Card visible={visible === 2}>
-            <div>
               <img src="/img/oddeven.png" />
             </div>
-            <p>Odd or Even</p>
+            <p>Odd or even</p>
           </Card>
-          <Card visible={visible === 3}>
+          <Card visible={visible === 2}>
             <div>
               <img src="/img/pickahand.png" />
             </div>
             <p>Pick a hand</p>
+          </Card>
+          <Card visible={visible === 3}>
+            <div>
+              <img src="/img/guessthefinger.png" />
+            </div>
+            <p>Guess the finger</p>
           </Card>
         </div>
       </Container>
