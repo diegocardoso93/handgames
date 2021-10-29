@@ -22,7 +22,7 @@ export default function Home() {
           <h3>
             One win$, the other l∅ses.
             <br />
-            <small>Where do you fit in?</small>
+            <small>Ready to try your luck?</small>
             <br />
           </h3>
         </div>

@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 360px;
+  max-width: 360px;
   margin: auto;
 `;
 
@@ -10,17 +10,24 @@ export const Option = styled.div`
   cursor: pointer;
   padding: 6px;
   margin: 4px;
-  width: 100%;
+  width: 112px;
   outline: 0;
   box-sizing: border-box;
 
   &:hover {
-    border: 3px solid #613ab7;
+    border: 2px solid #613ab7;
+    background: #613ab709;
   }
 
   p {
     margin: 0;
   }
 
-  ${({ active }: { active: boolean }) => active && `border: 3px solid #613ab7;`}
+  ${({ active }: { active: boolean }) =>
+    active && `border: 2px solid #613ab7;background: #613ab709;`}
+`;
+
+export const Button = styled.button`
+  ${({ active }: { active: boolean }) =>
+    active && `background: #000;color:white;`}
 `;

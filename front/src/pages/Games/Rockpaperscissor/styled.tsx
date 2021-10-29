@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
-  width: 360px;
+  max-width: 360px;
   margin: auto;
 `;
 
@@ -15,12 +15,14 @@ export const Option = styled.div`
   box-sizing: border-box;
 
   &:hover {
-    border: 3px solid #613ab7;
+    border: 2px solid #613ab7;
+    background: #613ab709;
   }
 
   p {
     margin: 0;
   }
 
-  ${({ active }: { active: boolean }) => active && `border: 3px solid #613ab7;`}
+  ${({ active }: { active: boolean }) =>
+    active && `border: 2px solid #613ab7;background: #613ab709;`}
 `;

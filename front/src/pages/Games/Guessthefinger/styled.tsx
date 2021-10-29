@@ -2,38 +2,38 @@ import styled from 'styled-components';
 
 type CircleProps = {
   active: boolean;
-  disabled: boolean;
   ml?: number;
   mt?: number;
 };
 
 export const Container = styled.div`
-  width: 360px;
+  max-width: 360px;
   margin: auto;
+  @media (max-width: 900px) {
+    height: 73vh;
+    overflow-y: scroll;
+  }
 `;
 
 export const Circle = styled.button`
-  ${({ active }: CircleProps) => active && `background: red;`}
-
-  border: 2px solid #ccc;
+  border: 2px solid #b5b5ff;
   border-radius: 100%;
-  width: 36px;
+  width: 52px;
   height: 36px;
-  position: absolute;
+  position: relative;
+  background: none;
   margin-left: ${({ ml }) => ml}px;
   margin-top: ${({ mt }) => mt}px;
 
-  ${({ disabled }) =>
-    !disabled &&
-    `
-    @media (hover: hover) {
-      &:hover {
-        filter: brightness(0.6);
-        cursor: pointer;
-        outline: none;
-      }
+  @media (hover: hover) {
+    &:hover {
+      filter: brightness(0.6);
+      cursor: pointer;
+      outline: none;
     }
-  `}
+  }
+
+  ${({ active }: CircleProps) => active && `background: #b5b5ff;`}
 `;
 
 export const Hand = styled.img`
@@ -47,17 +47,19 @@ export const Option = styled.div`
   cursor: pointer;
   padding: 6px;
   margin: 4px;
-  width: 100%;
+  width: 112px;
   outline: 0;
   box-sizing: border-box;
 
   &:hover {
-    border: 3px solid #613ab7;
+    border: 2px solid #613ab7;
+    background: #613ab709;
   }
 
   p {
     margin: 0;
   }
 
-  ${({ active }: { active: boolean }) => active && `border: 3px solid #613ab7;`}
+  ${({ active }: { active: boolean }) =>
+    active && `border: 2px solid #613ab7;background: #613ab709;`}
 `;
