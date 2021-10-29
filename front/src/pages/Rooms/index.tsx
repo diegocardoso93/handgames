@@ -1,6 +1,8 @@
-import React, { useEffect, useState } from 'react';
-import Guessthefinger from '../Guessthefinger';
-import Rockpaperscissor from '../Rockpaperscissor';
+import React, { ReactElement, useEffect, useState } from 'react';
+import Guessthefinger from '../Games/Guessthefinger';
+import Oddoreven from '../Games/Oddoreven';
+import Pickahand from '../Games/Pickahand';
+import Rockpaperscissor from '../Games/Rockpaperscissor';
 import {
   GamesContainer,
   Card,
@@ -15,7 +17,7 @@ import {
   Close,
 } from './styled';
 
-export default function Rooms() {
+export default function Rooms(): ReactElement {
   const [showModal, setShowModal] = useState(false);
   const [selectedGame, setSelectedGame] = useState<string>();
   const [modalTitle, setModalTitle] = useState('Pick a game');
@@ -62,6 +64,7 @@ export default function Rooms() {
                 onClick={() => {
                   setShowModal(false);
                   setSelectedGame('');
+                  setModalTitle('Pick a game');
                 }}
               >
                 &times;
@@ -123,8 +126,8 @@ export default function Rooms() {
                     <Rockpaperscissor />
                   )) ||
                     ''}
-                  {/* {(selectedGame === 'oddoreven' && <Oddoreven />) || ''} */}
-                  {/* {(selectedGame === 'pickahand' && <Pickahand />) || ''} */}
+                  {(selectedGame === 'oddoreven' && <Oddoreven />) || ''}
+                  {(selectedGame === 'pickahand' && <Pickahand />) || ''}
                 </div>
               )}
             </MBody>

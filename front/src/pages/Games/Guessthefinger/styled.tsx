@@ -36,6 +36,12 @@ export const Circle = styled.button`
   `}
 `;
 
+export const Hand = styled.img`
+  position: absolute;
+  width: 320px;
+  margin-left: -160px;
+`;
+
 export const Option = styled.div`
   border: 2px solid #000;
   cursor: pointer;

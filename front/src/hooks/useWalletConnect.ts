@@ -3,7 +3,7 @@ import WalletConnect from '@walletconnect/client';
 import QRCodeModal from 'algorand-walletconnect-qrcode-modal';
 import { IInternalEvent } from '@walletconnect/types';
 import algosdk from 'algosdk';
-import { useCallback, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import {
   apiGetAccountAssets,
   apiSubmitTransactions,
@@ -30,6 +30,21 @@ type ReturnAttrs = {
 export default function useWalletConnect(): ReturnAttrs {
   const [walletState, setWalletState] = useState(WALLET_INITIAL_STATE);
   const [pendingRequest, setPendingRequest] = useState(false);
+
+  useEffect(() => {
+    if (localStorage.getItem('walletconnect')) {
+      walletConnectInit();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (walletState.connector?.connected) {
+      const chain = localStorage.getItem('selectedChain') as ChainType;
+      if (chain) {
+        chainUpdate(chain);
+      }
+    }
+  }, [walletState.connector]);
 
   const walletConnectInit = async () => {
     // bridge url
@@ -115,6 +130,7 @@ export default function useWalletConnect(): ReturnAttrs {
 
   const chainUpdate = (newChain: ChainType) => {
     const newState = { ...walletState, chain: newChain };
+    localStorage.setItem('selectedChain', newChain);
     setWalletState(newState);
     getAccountAssets(newState);
   };
