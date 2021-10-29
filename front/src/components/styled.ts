@@ -9,6 +9,7 @@ export const SHeader = styled.div`
   align-items: center;
   justify-content: space-between;
   padding: 0;
+  height: 80px;
 `;
 
 export const SActiveAccount = styled.div`
@@ -59,12 +60,22 @@ export const Menu = styled.div`
   width: 200px;
   top: 0;
   padding: 16px;
+  z-index: 1;
 
   @media (max-width: 800px) {
     right: 0;
   }
   @media (min-width: 800px) {
-    left: calc(100vw - 400px);
+    left: calc(100vw - 30vw);
+  }
+  @media (min-width: 1024px) {
+    left: calc(100vw - 34vw);
+  }
+  @media (min-width: 1300px) {
+    left: calc(100vw - 38vw);
+  }
+  @media (min-width: 1600px) {
+    left: calc(100vw - 40vw);
   }
 `;
 

@@ -77,7 +77,7 @@ export const Modal = styled.div`
   width: 100%;
   height: 100%;
   position: fixed;
-  top: 60px;
+  top: 70px;
   left: 0;
   background: white;
 `;

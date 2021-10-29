@@ -18,13 +18,12 @@ export interface IWalletState {
   fetching: boolean;
   connected: boolean;
   showModal: boolean;
-  pendingRequest: boolean;
   signedTxns: Uint8Array[][] | null;
   pendingSubmissions: Array<number | Error>;
   uri: string;
   accounts: string[];
   address: string;
-  result: IResult | null;
+  result: IResult | null | string;
   chain: ChainType;
   assets: IAssetData[];
 }
@@ -34,7 +33,6 @@ export const WALLET_INITIAL_STATE: IWalletState = {
   fetching: false,
   connected: false,
   showModal: false,
-  pendingRequest: false,
   signedTxns: null,
   pendingSubmissions: [],
   uri: '',

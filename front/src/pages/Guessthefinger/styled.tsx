@@ -36,22 +36,8 @@ export const Circle = styled.button`
   `}
 `;
 
-export const Option = styled.div`
-  border: 2px solid #000;
-  cursor: pointer;
-  padding: 6px;
-  margin: 4px;
-  width: 100%;
-  outline: 0;
-  box-sizing: border-box;
-
-  &:hover {
-    border: 3px solid #613ab7;
-  }
-
-  p {
-    margin: 0;
-  }
-
-  ${({ active }: { active: boolean }) => active && `border: 3px solid #613ab7;`}
+export const Hand = styled.img`
+  position: absolute;
+  width: 320px;
+  margin-left: -160px;
 `;

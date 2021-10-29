@@ -51,7 +51,7 @@ const Header = (props: IHeaderProps) => {
       <Link to="/">
         <img
           src="/img/logo.png"
-          style={{ width: 160, marginTop: 24, marginLeft: 10 }}
+          style={{ width: 160, marginTop: 8, marginLeft: 10 }}
         />
       </Link>
 

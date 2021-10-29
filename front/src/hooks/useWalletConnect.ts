@@ -15,23 +15,21 @@ import {
   WALLET_INITIAL_STATE,
 } from '../helpers/apptypes';
 import { IWalletTransaction, SignTxnParams } from '../helpers/types';
-import {
-  Scenario,
-  scenarios,
-  signTxnWithTestAccount,
-} from '../helpers/scenarios';
+import { Scenario, signTxnWithTestAccount } from '../helpers/scenarios';
 
 type ReturnAttrs = {
   walletConnectInit: () => void;
   killSession: () => void;
   chainUpdate: (newChain: ChainType) => void;
-  signTxnScenario: (scenario: Scenario) => void;
-  submitSignedTransaction: () => void;
+  signTxnScenario: (scenario: Scenario, amount: number) => void;
+  submitSignedTransaction: (walletState: IWalletState) => void;
   walletState: IWalletState;
+  pendingRequest: boolean;
 };
 
 export default function useWalletConnect(): ReturnAttrs {
   const [walletState, setWalletState] = useState(WALLET_INITIAL_STATE);
+  const [pendingRequest, setPendingRequest] = useState(false);
 
   const walletConnectInit = async () => {
     // bridge url
@@ -174,14 +172,7 @@ export default function useWalletConnect(): ReturnAttrs {
     }
   };
 
-  const toggleModal = () =>
-    setWalletState({
-      ...walletState,
-      showModal: !walletState.showModal,
-      pendingSubmissions: [],
-    });
-
-  const signTxnScenario = async (scenario: Scenario) => {
+  const signTxnScenario = async (scenario: Scenario, amount: number) => {
     const { connector, address, chain } = walletState;
 
     if (!connector) {
@@ -189,13 +180,9 @@ export default function useWalletConnect(): ReturnAttrs {
     }
 
     try {
-      const txnsToSign = await scenario(chain, address);
-
-      // open modal
-      toggleModal();
-
+      const txnsToSign = await scenario(chain, address, amount);
       // toggle pending request indicator
-      setWalletState({ ...walletState, pendingRequest: true });
+      setPendingRequest(true);
 
       const flatTxns = txnsToSign.reduce((acc, val) => acc.concat(val), []);
 
@@ -319,25 +306,27 @@ export default function useWalletConnect(): ReturnAttrs {
       };
 
       // display result
-      setWalletState({
+      const newState = {
         ...walletState,
         connector,
-        pendingRequest: false,
         signedTxns,
         result: formattedResult,
-      });
+      };
+      setWalletState(newState);
+      setPendingRequest(false);
+      submitSignedTransaction(newState);
     } catch (error) {
       console.error(error);
       setWalletState({
         ...walletState,
         connector,
-        pendingRequest: false,
-        result: null,
+        result: 'rejected',
       });
+      setPendingRequest(false);
     }
   };
 
-  const submitSignedTransaction = async () => {
+  const submitSignedTransaction = async (walletState: IWalletState) => {
     const { signedTxns, chain } = walletState;
     if (signedTxns == null) {
       throw new Error('Transactions to submit are null');
@@ -390,5 +379,6 @@ export default function useWalletConnect(): ReturnAttrs {
     signTxnScenario,
     submitSignedTransaction,
     walletState,
+    pendingRequest,
   };
 }

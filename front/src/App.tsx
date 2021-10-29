@@ -22,7 +22,6 @@ function App() {
     connected,
     fetching,
     showModal,
-    pendingRequest,
     pendingSubmissions,
     result,
   } = walletState;
