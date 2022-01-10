@@ -6,10 +6,13 @@ import './App.css';
 import Rooms from './pages/Rooms';
 import useWalletConnect from './hooks/useWalletConnect';
 import Header from './components/Header';
+import useMyAlgo from './hooks/useMyAlgo';
 
 function App(): ReactElement {
   const { walletState, walletConnectInit, chainUpdate, killSession } =
     useWalletConnect();
+
+  const myAlgo = useMyAlgo();
 
   const {
     chain,
@@ -34,6 +37,7 @@ function App(): ReactElement {
             chainUpdate={chainUpdate}
             walletConnectInit={walletConnectInit}
             assets={assets}
+            myAlgo={myAlgo}
           />
           <Switch>
             <Route path="/rooms" component={Rooms}></Route>

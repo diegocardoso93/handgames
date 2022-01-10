@@ -28,6 +28,7 @@ export default function InputBet({
     <div style={{ marginTop: 20 }}>
       Bet:{' '}
       <input
+        id="bet"
         ref={amountRef}
         type="number"
         defaultValue="1"

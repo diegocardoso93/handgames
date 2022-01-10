@@ -100,3 +100,23 @@ export const MenuClose = styled.div`
   font-size: 24px;
   cursor: pointer;
 `;
+
+export const ModalWallet = styled.div`
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  background: white;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding-top: 200px;
+`;
+
+export const XClose = styled.div`
+  font-size: 48px;
+  font-weight: bold;
+  cursor: pointer;
+  position: absolute;
+  right: 40px;
+  top: 20px;
+`;

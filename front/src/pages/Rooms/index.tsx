@@ -46,7 +46,7 @@ export default function Rooms(): ReactElement {
         </THeader>
         <TBody>
           <TRow>
-            <div>UNH3...BH3M</div>
+            <div>5RWPQE...ICIHBI</div>
             <div>Odd or even</div>
             <div>1 Algo</div>
             <div style={{ marginLeft: '-18px' }}>

@@ -1,4 +1,5 @@
 import algosdk from 'algosdk';
+import axios from 'axios';
 import { IAssetData } from './types';
 
 export enum ChainType {
@@ -20,7 +21,8 @@ function clientForChain(chain: ChainType): algosdk.Algodv2 {
     case ChainType.TestNet:
       return testNetClient;
     default:
-      throw new Error(`Unknown chain type: ${chain}`);
+      return testNetClient;
+    // throw new Error(`Unknown chain type: ${chain}`);
   }
 }
 
@@ -93,7 +95,7 @@ export async function apiSubmitTransactions(
   return await waitForTransaction(chain, txId);
 }
 
-async function waitForTransaction(
+export async function waitForTransaction(
   chain: ChainType,
   txId: string
 ): Promise<number> {
@@ -112,4 +114,18 @@ async function waitForTransaction(
     lastStatus = await client.statusAfterBlock(lastRound + 1).do();
     lastRound = lastStatus['last-round'];
   }
+}
+
+export async function apiRegisterGame(
+  txId: string,
+  wallet: string,
+  type: string,
+  gameId?: string | null
+) {
+  return axios.post('/api/game', {
+    txId,
+    wallet,
+    type,
+    gameId,
+  });
 }

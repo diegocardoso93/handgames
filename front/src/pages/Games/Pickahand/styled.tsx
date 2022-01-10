@@ -5,7 +5,7 @@ export const Container = styled.div`
   margin: auto;
   @media (max-width: 900px) {
     height: 73vh;
-    overflow-y: scroll;
+    // overflow-y: scroll;
   }
 `;
 

@@ -1,4 +1,6 @@
 import React, { ReactElement, useState } from 'react';
+import { apiRegisterGame } from 'src/helpers/api';
+import useMyAlgo from 'src/hooks/useMyAlgo';
 import useWalletConnect from '../../../hooks/useWalletConnect';
 import InputBet from '../Common/InputBet';
 import WalletLoading from '../Common/WalletLoading';
@@ -10,6 +12,7 @@ export default function Oddoreven(): ReactElement {
   const [select, setSelected] = useState('');
   const [createRoomCalled, setCreateRoomCalled] = useState(false);
   const [guessedOption, setGuessedOption] = useState('');
+  const myAlgo = useMyAlgo();
 
   return (
     <Container>
@@ -63,8 +66,17 @@ export default function Oddoreven(): ReactElement {
           </Button>
           <InputBet
             signTxnScenario={signTxnScenario}
-            setCreateRoomCalled={setCreateRoomCalled}
-            connected={connected}
+            // setCreateRoomCalled={setCreateRoomCalled}
+            setCreateRoomCalled={async () => {
+              setCreateRoomCalled(true);
+              const inp = document.querySelector('#bet') as HTMLInputElement;
+              const txId = await myAlgo.makeTransaction(
+                (inp && inp?.value) || '0'
+              );
+              const wallet = myAlgo.getAccount();
+              await apiRegisterGame(txId, wallet, 'oddoreven');
+            }}
+            connected={connected || myAlgo.myAlgoConnected()}
           />
         </>
       )) || (
